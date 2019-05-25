@@ -36,13 +36,6 @@ def parse_buckets(str_buck):
 FLAGS = args.parse()
 _buckets = parse_buckets(FLAGS.buckets)
 
-glove_corpus_path = FLAGS.glove_model+".txt.voc%d" % FLAGS.vocab_size
-sentences = list(itertools.islice(Text8Corpus(glove_corpus_path),None))
-corpus = Corpus()
-corpus.fit(sentences, window=30)
-modelA = FLAGS.glove_model + "_%d.model" % FLAGS.size
-modelB = FLAGS.glove_model + "_%d.model" % (FLAGS.size*3/4)
-
 def train_GAN():
     os.environ['CUDA_VISIBLE_DEVICES'] = '1'
     from keras.backend.tensorflow_backend import set_session
@@ -56,7 +49,7 @@ def train_GAN():
     if not os.path.exists(FLAGS.pretrain_dir):
         os.makedirs(FLAGS.pretrain_dir)
     
-    if not os.path.exists(FLAGS.stargan_dir):
+    if not os.path.exists(FLAGS.gan_dir):
         os.makedirs(FLAGS.gan_dir)
     
     def build_summaries(): 
@@ -72,7 +65,13 @@ def train_GAN():
                         FLAGS.data_path, FLAGS.train_path, FLAGS.vocab_size)
     
     vocab_path = os.path.join(FLAGS.data_dir, "vocab%d" % FLAGS.vocab_size)
+    glove_corpus_path = FLAGS.glove_model + ".txt.voc%d" %FLAGS.vocab_size
     data_utils.combine_corpus(data_voc, train_voc, vocab_path, glove_corpus_path , 28)
+    sentences = list(itertools.islice(Text8Corpus(glove_corpus_path),None))
+    corpus = Corpus()
+    corpus.fit(sentences, window=30)
+    modelA = FLAGS.glove_model + "_%d.model" % FLAGS.size
+    modelB = FLAGS.glove_model + "_%d.model" % (FLAGS.size*3/4)
 
     if not os.path.exists(modelA) :
         gloveA = Glove(no_components=FLAGS.size, learning_rate=0.05)
@@ -269,7 +268,12 @@ def train_GAN():
 
 def test():
     os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
-    
+    glove_corpus_path = FLAGS.glove_model+".txt.voc%d" % FLAGS.vocab_size
+    sentences = list(itertools.islice(Text8Corpus(glove_corpus_path),None))
+    corpus = Corpus()
+    corpus.fit(sentences, window=30)
+    modelA = FLAGS.glove_model + "_%d.model" % FLAGS.size
+    modelB = FLAGS.glove_model + "_%d.model" % (FLAGS.size*3/4)
     gloveA = Glove.load(modelA)
     gloveA.add_dictionary(corpus.dictionary)
     gloveB = Glove.load(modelB)
@@ -346,7 +350,12 @@ def test():
 
 def seriestest():
     os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
-    
+    glove_corpus_path = FLAGS.glove_model+".txt.voc%d" % FLAGS.vocab_size
+    sentences = list(itertools.islice(Text8Corpus(glove_corpus_path),None))
+    corpus = Corpus()
+    corpus.fit(sentences, window=30)
+    modelA = FLAGS.glove_model + "_%d.model" % FLAGS.size
+    modelB = FLAGS.glove_model + "_%d.model" % (FLAGS.size*3/4)
     gloveA = Glove.load(modelA)
     gloveA.add_dictionary(corpus.dictionary)
     gloveB = Glove.load(modelB)
@@ -419,6 +428,12 @@ def seriestest():
 
 def disctest():
     os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
+    glove_corpus_path = FLAGS.glove_model+".txt.voc%d" % FLAGS.vocab_size
+    sentences = list(itertools.islice(Text8Corpus(glove_corpus_path),None))
+    corpus = Corpus()
+    corpus.fit(sentences, window=30)
+    modelA = FLAGS.glove_model + "_%d.model" % FLAGS.size
+    modelB = FLAGS.glove_model + "_%d.model" % (FLAGS.size*3/4)
     gloveA = Glove.load(modelA)
     gloveA.add_dictionary(corpus.dictionary)
     gloveB = Glove.load(modelB)
@@ -481,6 +496,12 @@ def disctest():
 
 def filetest():
     os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
+    glove_corpus_path = FLAGS.glove_model+".txt.voc%d" % FLAGS.vocab_size
+    sentences = list(itertools.islice(Text8Corpus(glove_corpus_path),None))
+    corpus = Corpus()
+    corpus.fit(sentences, window=30)
+    modelA = FLAGS.glove_model + "_%d.model" % FLAGS.size
+    modelB = FLAGS.glove_model + "_%d.model" % (FLAGS.size*3/4)
     gloveA = Glove.load(modelA)
     gloveA.add_dictionary(corpus.dictionary)
     gloveB = Glove.load(modelB)
@@ -568,7 +589,12 @@ def filetest():
 
 def multibleutest():
     os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
-    
+    glove_corpus_path = FLAGS.glove_model+".txt.voc%d" % FLAGS.vocab_size
+    sentences = list(itertools.islice(Text8Corpus(glove_corpus_path),None))
+    corpus = Corpus()
+    corpus.fit(sentences, window=30)
+    modelA = FLAGS.glove_model + "_%d.model" % FLAGS.size
+    modelB = FLAGS.glove_model + "_%d.model" % (FLAGS.size*3/4)
     if not os.path.exists("./multiBleu_log/"):
         os.makedirs("./multiBleu_log/")
     
@@ -683,7 +709,12 @@ def multibleutest():
 
 def maxbleutest():
     os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
-    
+    glove_corpus_path = FLAGS.glove_model+".txt.voc%d" % FLAGS.vocab_size
+    sentences = list(itertools.islice(Text8Corpus(glove_corpus_path),None))
+    corpus = Corpus()
+    corpus.fit(sentences, window=30)
+    modelA = FLAGS.glove_model + "_%d.model" % FLAGS.size
+    modelB = FLAGS.glove_model + "_%d.model" % (FLAGS.size*3/4)
     if not os.path.exists("./maxBleu_log/"):
         os.makedirs("./maxBleu_log/")
     

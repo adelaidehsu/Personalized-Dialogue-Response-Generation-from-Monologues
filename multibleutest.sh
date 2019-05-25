@@ -22,4 +22,4 @@ python3.6 main.py \
   --buckets='[(10,10),(20,20),(30,30)]' \
   --batch-size=64 \
   --file-head='open'\
-  --test-type='maxbleu_test' \
+  --test-type='multibleu_test' \
