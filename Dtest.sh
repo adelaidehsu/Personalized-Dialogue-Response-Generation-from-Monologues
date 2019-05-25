@@ -1,0 +1,23 @@
+python3.6 main.py \
+  --lr=0.5 \
+  --lr-decay=0.99 \
+  --model-dir=results/opensubtitle_vocab_1_256_1001_4/gan \
+  --data-dir=data \
+  --data-path=data/opensubtiltles.txt \
+  --feature-path=data/feature.txt \
+  --feature-size=6 \
+  --train-path=data/friends.txt \
+  --lambda-one=1 \
+  --lambda-two=1 \
+  --lambda-dis=1 \
+  --baseline=1.5 \
+  --iteration=25000 \
+  --Dstep=5 \
+  --Gstep=1 \
+  --size=256 \
+  --num-layers=1 \
+  --vocab-size=10000 \
+  --buckets='[(10,10),(20,20),(30,30)]' \
+  --batch-size=32 \
+  --test-type='D_test' \
+  
