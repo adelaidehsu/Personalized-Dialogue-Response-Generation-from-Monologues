@@ -21,4 +21,5 @@ For automatic testing by generating sentence files, please run:
 ```
 bash filetest.sh
 ```
-
+## Note
+If you are using your own dataset, please refer to our provided data directory for the correct format of conversations, monologues and features.
