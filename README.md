@@ -23,3 +23,15 @@ bash filetest.sh
 ```
 ## Note
 If you are using your own dataset, please refer to our provided data directory for the correct format of conversations, monologues and features.
+
+## Citation
+If you use any code in the repo in your work, please cite:
+```bash
+@inproceedings{Su2019PersonalizedDR,
+  title={Personalized Dialogue Response Generation Learned from Monologues},
+  author={Feng-Guang Su and Aliyah R. Hsu and Yi-Lin Tuan and Hung-yi Lee},
+  booktitle={Interspeech},
+  year={2019},
+  url={https://api.semanticscholar.org/CorpusID:202740149}
+}
+```
