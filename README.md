@@ -25,7 +25,7 @@ bash filetest.sh
 If you are using your own dataset, please refer to our provided data directory for the correct format of conversations, monologues and features.
 
 ## Citation
-If you use any code in the repo in your work, please cite:
+If you use any of our code in your work, please cite:
 ```bash
 @inproceedings{Su2019PersonalizedDR,
   title={Personalized Dialogue Response Generation Learned from Monologues},
